@@ -25,6 +25,7 @@ Vue.config.productionTip = false;
 AmplifyEventBus.$on("authState", (info) => {
   console.log(`AUTH: event emitted by an Amplify component: ${info}`);
   if (info === "signedIn") {
+    this.$router.push({ name: "home" });
     store.dispatch("setSignedIn", true);
     Auth.currentAuthenticatedUser()
       .then((data) => {

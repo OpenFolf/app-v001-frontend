@@ -6,7 +6,7 @@
       <v-spacer />
     </v-toolbar>
     <v-card-text class="text-center font-weight-bold my-12">
-      AWS AUTHENTICATION PLACEHOLDER
+      <amplify-authenticator v-bind:authConfig="authConfig"></amplify-authenticator>
     </v-card-text>
     <v-card-actions>
       <v-spacer />
