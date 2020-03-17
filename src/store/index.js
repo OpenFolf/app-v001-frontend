@@ -1,24 +1,22 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import auth from "./modules/auth";
+import todo from "./modules/todo";
+import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-    signedIn: false,
+  plugins: [
+    createPersistedState({
+      storage: window.sessionStorage,
+    }),
+  ],
+  state: {},
+  mutations: {},
+  actions: {},
+  modules: {
+    auth,
+    todo,
   },
-  getters: {
-    getAuth: (state) => state.signedIn,
-  },
-  mutations: {
-    SIGN_IN(state) {
-      state.signedIn = true;
-    },
-  },
-  actions: {
-    signIn({ commit }) {
-      commit("SIGN_IN");
-    },
-  },
-  modules: {},
 });
