@@ -1,0 +1,26 @@
+{
+	"auth": {
+		"appv001frontende717244fe717244f": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	},
+	"api": {
+		"openfolf": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
+						"userPoolConfig": {
+							"userPoolId": "authappv001frontende717244fe717244f"
+						}
+					}
+				}
+			}
+		}
+	}
+}

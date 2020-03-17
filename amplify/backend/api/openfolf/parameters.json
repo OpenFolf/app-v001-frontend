@@ -1,0 +1,11 @@
+{
+    "AppSyncApiName": "openfolf",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authappv001frontende717244fe717244f",
+            "Outputs.UserPoolId"
+        ]
+    }
+}
