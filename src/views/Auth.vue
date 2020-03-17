@@ -27,7 +27,7 @@
     methods: {
       fakeLogin() {
         console.log("TODO - Implement Vuex");
-        this.$store.dispatch("signIn");
+        //this.$store.dispatch("signIn");
         this.$router.push({ name: "home" });
       },
     },
