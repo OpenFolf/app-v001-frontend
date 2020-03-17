@@ -1,7 +1,7 @@
 <template>
   <v-card max-width="400" class="mx-auto">
     <v-app-bar dark color="pink" app>
-      <v-toolbar-title class="headline">Home</v-toolbar-title>
+      <v-toolbar-title class="headline">New Game</v-toolbar-title>
       <v-spacer />
     </v-app-bar>
 
@@ -39,7 +39,7 @@
 
 <script>
   export default {
-    name: "home",
+    name: "new-game",
     data: () => ({
       items: [
         {
