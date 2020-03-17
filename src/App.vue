@@ -2,7 +2,7 @@
   <v-app>
     <v-content>
       <router-view />
-      <bottom-nav v-if="getAuth" />
+      <bottom-nav v-if="signedIn" />
     </v-content>
   </v-app>
 </template>
@@ -15,7 +15,7 @@
       BottomNav: () => import("@/components/BottomNav.vue"),
     },
     computed: {
-      ...mapGetters(["getAuth"]),
+      ...mapGetters(["signedIn"]),
     },
   };
 </script>
