@@ -1,6 +1,6 @@
 <template>
   <v-card max-width="400" class="mx-auto">
-    <v-app-bar dark color="pink" app>
+    <v-app-bar color="#41b883" app>
       <v-toolbar-title class="headline">Options</v-toolbar-title>
       <v-spacer />
     </v-app-bar>
