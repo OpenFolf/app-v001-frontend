@@ -1,33 +1,58 @@
 <template>
-  <v-card class="mx-auto my-12" color="#41b883">
-    <v-toolbar color="green">
-      <v-spacer />
-      <v-toolbar-title>openFOLF Login</v-toolbar-title>
-      <v-spacer />
-    </v-toolbar>
-    <v-card-text class="text-center font-weight-bold my-12">
-      <amplify-authenticator v-bind:authConfig="authConfig"></amplify-authenticator>
-    </v-card-text>
-    <v-card-actions>
-      <v-spacer />
-      <v-btn color="green" @click="fakeLogin">Login</v-btn>
-      <v-spacer />
-    </v-card-actions>
-  </v-card>
+  <v-container>
+    <v-btn block @click="showAmplify = !showAmplify" color="#f90">
+      TOGGLE AWS-AMPLIFY COMPONENT
+    </v-btn>
+    <v-divider class="my-5" />
+    <v-btn block @click="fakeSignin" color="red">
+      FAKE SIGNIN <v-icon right>fa-sign-in-alt</v-icon>
+    </v-btn>
+    <v-divider class="my-5" />
+    <v-btn block @click="showCustom = !showCustom" color="#41b883">TOGGLE OPENFOLF AUTH</v-btn>
+    <v-divider class="my-5" />
+    <template v-if="showAmplify">
+      <amplify-authenticator />
+    </template>
+    <template v-if="showCustom">
+      <v-divider />
+      <p class="headline black">LOGIN</p>
+      <login />
+      <v-divider />
+      <p class="headline black">SIGNUP</p>
+      <signup />
+      <v-divider />
+      <p class="headline black">SIGN OUT</p>
+      <signout />
+      <v-divider />
+      <p class="headline black">RESET PASSWORD</p>
+      <reset-password />
+      <v-divider />
+      <p class="headline black">CONFIRM SIGNUP</p>
+      <confirm-signup />
+    </template>
+  </v-container>
 </template>
 
 <script>
   export default {
     name: "auth",
+    components: {
+      Login: () => import("@/components/auth/Login.vue"),
+      Signup: () => import("@/components/auth/Signup.vue"),
+      Signout: () => import("@/components/auth/Signout.vue"),
+      ResetPassword: () => import("@/components/auth/ResetPassword.vue"),
+      ConfirmSignup: () => import("@/components/auth/ConfirmSignup.vue"),
+    },
     data() {
       return {
-        dummy: "value",
+        showCustom: false,
+        showAmplify: false,
       };
     },
     methods: {
-      fakeLogin() {
-        console.log("TODO - Implement Vuex");
-        //this.$store.dispatch("signIn");
+      fakeSignin() {
+        this.$store.dispatch("setUser", "Folfberg Nördakall");
+        this.$store.dispatch("setSignedIn", true);
         this.$router.push({ name: "home" });
       },
     },
