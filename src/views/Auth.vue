@@ -4,8 +4,13 @@
       TOGGLE AWS-AMPLIFY COMPONENT
     </v-btn>
     <v-divider class="my-5" />
+    <span>Signed in: {{ signedIn }}</span> | <span>User: {{ user }}</span>
     <v-btn block @click="fakeSignin" color="red">
       FAKE SIGNIN <v-icon right>fa-sign-in-alt</v-icon>
+    </v-btn>
+    <v-divider class="my-5" />
+    <v-btn block @click="navigate" color="blue">
+      NAVIGATE TO MAIN
     </v-btn>
     <v-divider class="my-5" />
     <v-btn block @click="showCustom = !showCustom" color="#41b883">TOGGLE OPENFOLF AUTH</v-btn>
@@ -34,6 +39,7 @@
 </template>
 
 <script>
+  import { mapGetters } from "vuex";
   export default {
     name: "auth",
     components: {
@@ -49,10 +55,15 @@
         showAmplify: false,
       };
     },
+    computed: {
+      ...mapGetters(["user", "signedIn"]),
+    },
     methods: {
       fakeSignin() {
         this.$store.dispatch("setUser", "Folfberg Nördakall");
         this.$store.dispatch("setSignedIn", true);
+      },
+      navigate() {
         this.$router.push({ name: "home" });
       },
     },
