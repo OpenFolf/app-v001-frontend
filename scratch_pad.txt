@@ -1,0 +1,59 @@
+###########################
+## Initial View for Auth ##
+###########################
+
+<v-card max-height="" class="mx-auto my-12" color="#41b883">
+  <v-toolbar color="green">
+    <v-spacer />
+    <v-toolbar-title>openFOLF Login</v-toolbar-title>
+    <v-spacer />
+  </v-toolbar>
+  <v-card-text class="text-center font-weight-bold my-12">
+    <amplify-authenticator v-bind:authConfig="authConfig"></amplify-authenticator>
+  </v-card-text>
+  <v-card-actions>
+    <v-spacer />
+    <v-btn color="green" @click="fakeLogin">Login</v-btn>
+    <v-spacer />
+  </v-card-actions>
+</v-card>
+
+methods: {
+  fakeLogin() {
+    console.log("TODO - Implement Vuex");
+    //this.$store.dispatch("signIn");
+    this.$router.push({ name: "home" });
+  },
+},
+
+
+############################
+## All amplify components ##
+############################
+
+<v-container>
+  <hr />
+  <p>amplify-authenticator</p>
+  <amplify-authenticator />
+  <hr />
+  <p>amplify-sign-in</p>
+  <amplify-sign-in />
+  <hr />
+  <p>amplify-confirm-sign-in</p>
+  <amplify-confirm-sign-in />
+  <hr />
+  <p>amplify-sign-up</p>
+  <amplify-sign-up />
+  <hr />
+  <p>amplify-confirm-sign-up</p>
+  <amplify-confirm-sign-up />
+  <hr />
+  <p>amplify-forgot-password</p>
+  <amplify-forgot-password />
+  <hr />
+  <p>amplify-sign-out</p>
+  <amplify-sign-out />
+  <hr />
+  <p>amplify-set-mfa</p>
+  <amplify-set-mfa />
+</v-container>
