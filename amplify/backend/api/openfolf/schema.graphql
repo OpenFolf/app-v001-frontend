@@ -3,3 +3,42 @@ type Todo @model {
   name: String!
   description: String
 }
+
+type User @model {
+    id: ID!
+    username: String!
+    email: String!
+    games: [ Game! ]!
+    friends: [ User! ]!
+    favoritecourses: [ Course! ]!
+}
+
+type Game @model {
+    id: ID!
+    course: Course!
+    owner: User!
+    players: [ User! ]!
+}
+
+type Course @model {
+    id: ID!
+    name: String!
+    holes: [ Hole! ]!
+    courselength: Int
+    yearestablished: Int
+    parinfo: Int
+    teetype: String
+    baskettype: String
+    description: String
+    streetaddress: String
+    postalcode: String
+    location: String
+}
+
+type Hole @model {
+    id: ID!
+    no: Int!
+    nickname: String
+    course: Course!
+    par: Int
+}
