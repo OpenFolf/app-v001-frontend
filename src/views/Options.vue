@@ -1,35 +1,32 @@
 <template>
   <v-card max-width="400" class="mx-auto">
-    <v-app-bar color="#41b883" app>
-      <v-toolbar-title class="headline">Options</v-toolbar-title>
-      <v-spacer />
-    </v-app-bar>
-
     <v-container>
       <v-row dense>
         <v-col cols="12">
-          <v-card color="#385F73" dark>
-            <v-card-title class="headline">Unlimited music now</v-card-title>
-            <v-card-subtitle>
-              Listen to your favorite artists and albums whenever and wherever, online and offline.
+          <v-card color="#385F73" class="mb-2">
+            <v-card-text class="text-center text--white font-weight-black headline pb-0">
+              Dark or Light Theme?
+            </v-card-text>
+            <v-card-subtitle class="text-center">
+              You can toggle the theme of the application. Do you like it dark or light?
             </v-card-subtitle>
             <v-card-actions>
-              <v-btn text>Listen Now</v-btn>
+              <v-spacer />
+              <v-btn block outlined @click="toggleDark">Toggle Theme</v-btn>
+              <v-spacer />
             </v-card-actions>
           </v-card>
         </v-col>
-
-        <v-col v-for="(item, i) in items" :key="i" cols="12">
-          <v-card :color="item.color" dark>
-            <div class="d-flex flex-no-wrap justify-space-between">
-              <div>
-                <v-card-title class="headline" v-text="item.title"></v-card-title>
-                <v-card-subtitle v-text="item.artist"></v-card-subtitle>
-              </div>
-              <v-avatar class="ma-3" size="125" tile>
-                <v-img :src="item.src"></v-img>
-              </v-avatar>
-            </div>
+        <v-col cols="12">
+          <v-card color="#952175">
+            <v-card-text class="text-center text--white font-weight-black headline">
+              Quit the application!
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer />
+              <v-btn @click="signOut" block outlined>sign out</v-btn>
+              <v-spacer />
+            </v-card-actions>
           </v-card>
         </v-col>
       </v-row>
@@ -38,23 +35,33 @@
 </template>
 
 <script>
+  import { mapActions } from "vuex";
+  import { AmplifyEventBus } from "aws-amplify-vue";
+  import { Auth } from "aws-amplify";
   export default {
     name: "options",
-    data: () => ({
-      items: [
-        {
-          color: "#1F7087",
-          src: "https://cdn.vuetifyjs.com/images/cards/foster.jpg",
-          title: "Supermodel",
-          artist: "Foster the People",
-        },
-        {
-          color: "#952175",
-          src: "https://cdn.vuetifyjs.com/images/cards/halcyon.png",
-          title: "Halcyon Days",
-          artist: "Ellie Goulding",
-        },
-      ],
-    }),
+    data() {
+      return {
+        error: "",
+        Auth,
+      };
+    },
+    methods: {
+      ...mapActions(["logOut"]),
+      toggleDark() {
+        this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+      },
+      signOut() {
+        this.$Amplify.Auth.signOut()
+          .then(() => {
+            return AmplifyEventBus.$emit("authState", "signedOut");
+          })
+          .catch((e) => this.setError(e));
+        this.logOut();
+      },
+      setError: function(e) {
+        console.log("error", e);
+      },
+    },
   };
 </script>
