@@ -1,21 +1,21 @@
 <template>
-  <v-bottom-navigation app dark shift>
-    <v-btn :to="{ name: 'home' }">
+  <v-bottom-navigation shift app background-color="#41b883">
+    <v-btn :to="{ name: 'home' }" color="#41b883">
       <span>Home</span>
       <v-icon>fa-home</v-icon>
     </v-btn>
 
-    <v-btn :to="{ name: 'new-game' }">
+    <v-btn :to="{ name: 'new-game' }" color="#41b883">
       <span>New Game</span>
-      <v-icon>fa-plus-square</v-icon>
+      <v-icon>fa-play</v-icon>
     </v-btn>
 
-    <v-btn :to="{ name: 'join-game' }">
+    <v-btn :to="{ name: 'join-game' }" color="#41b883">
       <span>Join Game</span>
-      <v-icon>fa-sign-in-alt</v-icon>
+      <v-icon>fa-qrcode</v-icon>
     </v-btn>
 
-    <v-btn :to="{ name: 'options' }">
+    <v-btn :to="{ name: 'options' }" color="#41b883">
       <span>Options</span>
       <v-icon>fa-user-cog</v-icon>
     </v-btn>
