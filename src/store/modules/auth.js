@@ -22,7 +22,7 @@ const mutations = {
     state.signedIn = signedIn;
   },
   // DEBUG: ADDED LOG OUT MUTATION - AEXX
-  LOG_OUT: (state) => {
+  SIGN_OUT: (state) => {
     state.user = null;
     state.signedIn = false;
     sessionStorage.clear();
@@ -38,8 +38,8 @@ const actions = {
     commit("setSignedIn", signedIn);
   },
   // DEBUG: ADDED LOG OUT ACTION - AEXX
-  logOut: ({ commit }) => {
-    commit("LOG_OUT");
+  signOut: ({ commit }) => {
+    commit("SIGN_OUT");
   },
 };
 
