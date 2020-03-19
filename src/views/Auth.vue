@@ -39,7 +39,7 @@
 </template>
 
 <script>
-  import { mapGetters } from "vuex";
+  import { mapGetters, mapActions } from "vuex";
   export default {
     name: "auth",
     components: {
@@ -59,9 +59,11 @@
       ...mapGetters(["user", "signedIn"]),
     },
     methods: {
+      ...mapActions(["setUser", "setSignedIn"]),
       fakeSignin() {
-        this.$store.dispatch("setUser", "Folfberg Nördakall");
-        this.$store.dispatch("setSignedIn", true);
+        const username = "Folfberg Nördakall";
+        this.setUser({ username });
+        this.setSignedIn(true);
       },
       navigate() {
         this.$router.push({ name: "home" });
