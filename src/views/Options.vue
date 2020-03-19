@@ -24,7 +24,7 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer />
-              <v-btn @click="signOut" block outlined>sign out</v-btn>
+              <v-btn @click="signOutAWS" block outlined>sign out</v-btn>
               <v-spacer />
             </v-card-actions>
           </v-card>
@@ -37,27 +37,20 @@
 <script>
   import { mapActions } from "vuex";
   import { AmplifyEventBus } from "aws-amplify-vue";
-  import { Auth } from "aws-amplify";
   export default {
     name: "options",
-    data() {
-      return {
-        error: "",
-        Auth,
-      };
-    },
     methods: {
-      ...mapActions(["logOut"]),
+      ...mapActions(["signOut"]),
       toggleDark() {
         this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
       },
-      signOut() {
+      signOutAWS() {
         this.$Amplify.Auth.signOut()
           .then(() => {
             return AmplifyEventBus.$emit("authState", "signedOut");
           })
           .catch((e) => this.setError(e));
-        this.logOut();
+        this.signOut();
       },
       setError: function(e) {
         console.log("error", e);
