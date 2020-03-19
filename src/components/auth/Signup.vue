@@ -26,6 +26,7 @@
     <v-card-actions>
       <v-spacer />
       <v-btn @click="fakeSignup" color="#41b883">Sign up</v-btn>
+      <v-spacer />
     </v-card-actions>
     <v-card-actions>
       <v-spacer />
