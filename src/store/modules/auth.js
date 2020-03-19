@@ -1,3 +1,5 @@
+import router from "@/router"; // DEBUG: ADDED ROUTER IMPORT TO REDIRECT AFTER LOG OUT - AEXX
+
 const state = {
   user: null,
   signedIn: false,
@@ -19,6 +21,13 @@ const mutations = {
   setSignedIn: (state, signedIn) => {
     state.signedIn = signedIn;
   },
+  // DEBUG: ADDED LOG OUT MUTATION - AEXX
+  LOG_OUT: (state) => {
+    state.user = null;
+    state.signedIn = false;
+    sessionStorage.clear();
+    router.push({ name: "auth" });
+  },
 };
 
 const actions = {
@@ -27,6 +36,10 @@ const actions = {
   },
   setSignedIn: ({ commit }, signedIn) => {
     commit("setSignedIn", signedIn);
+  },
+  // DEBUG: ADDED LOG OUT ACTION - AEXX
+  logOut: ({ commit }) => {
+    commit("LOG_OUT");
   },
 };
 

@@ -4,7 +4,7 @@
       TOGGLE AWS-AMPLIFY COMPONENT
     </v-btn>
     <v-divider class="my-5" />
-    <span>Signed in: {{ signedIn }}</span> | <span>User: {{ user.username }}</span>
+    <span>Signed in: {{ signedIn }}</span> | <span>User: {{ user ? user.username : "none" }}</span>
     <v-btn block @click="fakeSignin" color="red">
       FAKE SIGNIN <v-icon right>fa-sign-in-alt</v-icon>
     </v-btn>
