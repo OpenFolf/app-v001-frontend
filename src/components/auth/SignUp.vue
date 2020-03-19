@@ -1,7 +1,14 @@
 <template>
   <v-card width="400px" class="mx-auto my-5 font-weight-bold">
     <v-toolbar color="#41b883">
-      <v-toolbar-title>openFOLF - Sign up</v-toolbar-title>
+      <v-img
+        class="mr-2"
+        :src="require('@/assets/basket_white.png')"
+        max-height="35"
+        max-width="35"
+        contain
+      />
+      <v-toolbar-title>openFOLF - Sign Up</v-toolbar-title>
       <v-spacer />
     </v-toolbar>
     <v-card-text>
@@ -15,7 +22,7 @@
           @click:append="showPassword = !showPassword"
         />
         <v-text-field
-          label="Retype Password"
+          label="Re-type Password"
           v-model="rePassword"
           :type="reshowPassword ? 'text' : 'password'"
           :append-icon="reshowPassword ? 'fa-eye' : 'fa-eye-slash'"
@@ -25,12 +32,12 @@
     </v-card-text>
     <v-card-actions>
       <v-spacer />
-      <v-btn @click="fakeSignup" color="#41b883">Sign up</v-btn>
+      <v-btn @click="fakeSignup" color="#41b883">Sign Up</v-btn>
       <v-spacer />
     </v-card-actions>
     <v-card-actions>
       <v-spacer />
-      <v-btn x-small text @click="fakeToggle">Already have an account? Login!</v-btn>
+      <v-btn x-small text @click="fakeToggle">Already have an account? Sign In!</v-btn>
       <v-spacer />
     </v-card-actions>
   </v-card>
@@ -38,7 +45,7 @@
 
 <script>
   export default {
-    name: "signup",
+    name: "sign-up",
     data() {
       return {
         email: "",
@@ -50,10 +57,10 @@
     },
     methods: {
       fakeToggle() {
-        console.log("Fake 'toggle Signin/login' triggered");
+        console.log("Fake 'toggle Sign In/Sign Up' triggered");
       },
       fakeSignup() {
-        console.log("Fake 'Signup' triggered");
+        console.log("Fake 'Sign Up' triggered");
         console.log("Fake validation: Do the passwords match?");
       },
     },
