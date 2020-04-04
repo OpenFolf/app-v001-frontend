@@ -1,6 +1,7 @@
 import { API, graphqlOperation } from "aws-amplify";
 import * as queries from "../../graphql/queries";
 import * as graphQLmutations from "../../graphql/mutations";
+import * as subscriptions from "../../graphql/subscriptions";
 
 const state = {
   courses: [],
@@ -30,7 +31,6 @@ const actions = {
   async addCourse(context, payload) {
     const courseDetails = {
       name: payload,
-      description: "Eitthvad bull",
     };
 
     const newCourse = await API.graphql(
@@ -38,6 +38,14 @@ const actions = {
     );
 
     context.commit("newCourse", newCourse.data);
+  },
+
+  async subscribeCourses(context) {
+    const courses = API.graphql(graphqlOperation(subscriptions.onCreateCourse)).subscribe({
+      next: (coursesData) => context.commit("updateCourseList", coursesData.value.data)
+    });
+
+    console.log(courses);
   },
 };
 

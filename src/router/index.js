@@ -35,6 +35,11 @@ const routes = [
     name: "options",
     component: () => import("@/views/Options.vue"),
   },
+  {
+    path: "/test",
+    name: "test",
+    component: () => import("@/views/Test.vue"),
+  },
 ];
 
 const router = new VueRouter({
