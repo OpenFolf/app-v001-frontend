@@ -46,3 +46,57 @@ export default {
   mutations,
   actions,
 };
+
+// Query test
+// query getTodos {
+//     getTodo (id: "c7efc4b0-4ef3-4489-bcf3-199b95d569d6") {
+//       id
+//       name
+//     }
+//   }
+  
+//   mutation addTodo {
+//     createTodo (input: {
+//       name: "Test-1"
+//     }) {
+//           id
+//       name
+//     }
+//   }
+  
+  
+//   mutation addField {
+//     createCourse (input: {
+//           name: "Test"
+//           courselength: 0
+//           yearestablished: 0
+//           parinfo: 0
+//           teetype: "n/a"
+//           baskettype: "n/a"
+//           description: "n/a"
+//           streetaddress: "n/a"
+//           postalcode: "n/a"
+//           location: "n/a"
+//     }) {
+//       id
+//       name
+//     }
+//   }
+  
+//   query getAllCourses {
+//     listCourses {
+//       items {
+//         id
+//         name
+//               courselength
+//               yearestablished
+//               parinfo
+//               teetype
+//               baskettype
+//               description
+//               streetaddress
+//               postalcode
+//               location
+//       }
+//     }
+//   }

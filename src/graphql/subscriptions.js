@@ -507,25 +507,25 @@ export const onCreateCourse = /* GraphQL */ `
     onCreateCourse {
       id
       name
-      holes {
-        id
-        no
-        nickname
-        course {
-          id
-          name
-          courselength
-          yearestablished
-          parinfo
-          teetype
-          baskettype
-          description
-          streetaddress
-          postalcode
-          location
-        }
-        par
-      }
+    #   holes {
+    #     id
+    #     no
+    #     nickname
+    #     course {
+    #       id
+    #       name
+    #       courselength
+    #       yearestablished
+    #       parinfo
+    #       teetype
+    #       baskettype
+    #       description
+    #       streetaddress
+    #       postalcode
+    #       location
+    #     }
+    #     par
+    #   }
       courselength
       yearestablished
       parinfo

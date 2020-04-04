@@ -304,12 +304,12 @@ export const listCourses = /* GraphQL */ `
       items {
         id
         name
-        holes {
-          id
-          no
-          nickname
-          par
-        }
+        # holes {
+        #   id
+        #   no
+        #   nickname
+        #   par
+        # }
         courselength
         yearestablished
         parinfo

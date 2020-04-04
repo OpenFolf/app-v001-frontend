@@ -39,12 +39,7 @@ type Hole @model {
     id: ID!
     no: Int!
     nickname: String
-    course: Course!
+    course: Course! @connection
     par: Int
 }
 
-query GetTodoId($id: ID!) {
-    getTodo(id: $id) {
-      id
-    }
-  }
