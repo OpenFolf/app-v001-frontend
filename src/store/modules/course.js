@@ -24,9 +24,12 @@ const mutations = {
 
 const actions = {
   async getCourseList(context) {
-    const payload = await API.graphql(graphqlOperation(queries.listCourses));
-    context.commit("updateCourseList", payload);
-  },
+    
+    const response = await API.graphql(graphqlOperation(queries.listCourses));
+    const courseList = response.data.listCourses.items;
+    
+    context.commit("updateCourseList", courseList);
+},
 
   async addCourse(context, payload) {
     const courseDetails = {
@@ -42,7 +45,7 @@ const actions = {
 
   async subscribeCourses(context) {
     const courses = API.graphql(graphqlOperation(subscriptions.onCreateCourse)).subscribe({
-      next: (coursesData) => context.commit("updateCourseList", coursesData.value.data)
+      next: (coursesData) => context.commit("updateCourseList", coursesData.value.data),
     });
 
     console.log(courses);
