@@ -1,23 +1,17 @@
 const AWS = require("aws-sdk");
-const dynamodb = new AWS.DynamoDB({ region: "us-east-2", apiVersion: "2012-08-10" });
+const dynamodb = new AWS.DynamoDB({ region: "eu-west-2", apiVersion: "2012-08-10" });
 
 exports.handler = (event, context, callback) => {
   const params = {
     Item: {
-      UserId: {
-        S: "" + event.userId,
+      id: {
+        S: "" + event.userName,
       },
-      Age: {
-        N: event.age,
-      },
-      Height: {
-        N: event.height,
-      },
-      Income: {
-        N: event.income,
+      email: {
+        S: "" + event.request.userAttributes.email,
       },
     },
-    TableName: "compare-yourself",
+    TableName: "users-dev",
   };
   dynamodb.putItem(params, function(err, data) {
     if (err) {
@@ -25,7 +19,7 @@ exports.handler = (event, context, callback) => {
       callback(err);
     } else {
       console.log(data);
-      callback(null, data);
+      callback(null, event);
     }
   });
 };

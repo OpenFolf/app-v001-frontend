@@ -71,7 +71,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-app-v001-frontend-dev-185037-deployment",
-					"S3Key": "amplify-builds/appv001frontende979d458-79306f6f4f785336732f-build.zip"
+					"S3Key": "amplify-builds/appv001frontende979d458-38667679336b33784d74-build.zip"
 				}
 			}
 		},
